@@ -27,7 +27,34 @@ import java.text.SimpleDateFormat
 import java.util.*
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.carwale.android.carewale_assessment_challenge.R
+import com.carwale.android.carewale_assessment_challenge.app.model.globalData.CovidGlobalDataResponse
+import com.carwale.android.carewale_assessment_challenge.app.room.entities.CountryDetails
+import com.carwale.android.carewale_assessment_challenge.app.room.entities.GlobalDetails
 import java.util.concurrent.TimeUnit
+
+
+inline fun CovidGlobalDataResponse.convertToDbModel(response: CovidGlobalDataResponse): GlobalDetails? {
+
+    val globalDetails = GlobalDetails(
+        newConfirmed = response.global.newConfirmed,
+        totalConfirmed = response.global.totalConfirmed,
+        newDeaths = response.global.newDeaths,
+        totalDeaths = response.global.totalDeaths,
+        newRecovered = response.global.newRecovered,
+        totalRecovered = response.global.totalRecovered)
+
+    response.countries?.forEach {
+       globalDetails.countryList?.add(CountryDetails(countryName = it!!.country,countryCode = it?.countryCode,slug = it?.slug,
+           newConfirmed = response.global.newConfirmed,
+           totalConfirmed = response.global.totalConfirmed,
+           newDeaths = response.global.newDeaths,
+           totalDeaths = response.global.totalDeaths,
+           newRecovered = response.global.newRecovered,
+           totalRecovered = response.global.totalRecovered))
+   }
+    Log.d("Extention", "convertToDbModel: size : ${globalDetails.countryList?.size}")
+    return globalDetails
+}
 
 fun getProgressDrawable(context: Context): CircularProgressDrawable {
     return CircularProgressDrawable(context).apply {
@@ -93,6 +120,7 @@ fun BaseFragment.showOkaySnackBar(view: View, msg: String) {
     }
     snackbar.show()
 }
+
 fun BaseActivity.showOkaySnackBar(view: View, msg: String) {
     val snackbar = Snackbar.make(view, msg, Snackbar.LENGTH_INDEFINITE)
     snackbar.setAction(MConstants.SNACK_BAR_OKAY_BTN_TEXT) {
@@ -235,6 +263,7 @@ fun String.convertDateTimeToReadableFormat(dateTime: String, dateTimeFormat: Str
         SimpleDateFormat(dateTimeFormat, Locale.ENGLISH)
     return wantToConvertToDateTimeFormat.format(originalDateTimeFormat.parse(dateTime))
 }
+
 fun convertDateToReadableFormat(dateTime: Date, dateTimeFormat: String): String {
     val wantToConvertToDateTimeFormat: DateFormat =
         SimpleDateFormat(dateTimeFormat, Locale.ENGLISH)

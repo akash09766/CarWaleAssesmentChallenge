@@ -10,13 +10,13 @@ data class CovidGlobalDataResponse(@SerializedName("Countries")
 
 
 data class CountriesItem(@SerializedName("NewRecovered")
-                         val newRecovered: Int = 0,
+                         val newRecovered: Long = 0,
                          @SerializedName("NewDeaths")
-                         val newDeaths: Int = 0,
+                         val newDeaths: Long = 0,
                          @SerializedName("TotalRecovered")
-                         val totalRecovered: Int = 0,
+                         val totalRecovered: Long = 0,
                          @SerializedName("TotalConfirmed")
-                         val totalConfirmed: Int = 0,
+                         val totalConfirmed: Long = 0,
                          @SerializedName("Country")
                          val country: String = "",
                          @SerializedName("CountryCode")
@@ -24,22 +24,22 @@ data class CountriesItem(@SerializedName("NewRecovered")
                          @SerializedName("Slug")
                          val slug: String = "",
                          @SerializedName("NewConfirmed")
-                         val newConfirmed: Int = 0,
+                         val newConfirmed: Long = 0,
                          @SerializedName("TotalDeaths")
-                         val totalDeaths: Int = 0)
+                         val totalDeaths: Long = 0)
 
 
 data class Global(@SerializedName("NewRecovered")
-                  val newRecovered: Int = 0,
+                  val newRecovered: Long = 0,
                   @SerializedName("NewDeaths")
-                  val newDeaths: Int = 0,
+                  val newDeaths: Long = 0,
                   @SerializedName("TotalRecovered")
-                  val totalRecovered: Int = 0,
+                  val totalRecovered: Long = 0,
                   @SerializedName("TotalConfirmed")
-                  val totalConfirmed: Int = 0,
+                  val totalConfirmed: Long = 0,
                   @SerializedName("NewConfirmed")
-                  val newConfirmed: Int = 0,
+                  val newConfirmed: Long = 0,
                   @SerializedName("TotalDeaths")
-                  val totalDeaths: Int = 0)
+                  val totalDeaths: Long = 0)
 
 

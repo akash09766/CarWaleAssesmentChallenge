@@ -11,7 +11,7 @@ interface GlobalDetailsDao {
 
     @Transaction
     @Query("SELECT * FROM global_details WHERE id =:id")
-    fun getGlobalDetailsWithCountry(id: String): Flow<GlobalDetailsWithCountry?>
+    fun getGlobalDetailsWithCountry(id: Int): Flow<GlobalDetailsWithCountry?>
 
     @Transaction
     fun insertGlobalDetailsWithCountry(GlobalDetails: GlobalDetails) {
@@ -32,7 +32,7 @@ interface GlobalDetailsDao {
     fun updateCountryDetails(CountryDetails: List<CountryDetails?>?): Int
 
     @Query("DELETE FROM global_details WHERE id =:id")
-    fun deleteGlobalDetailById(id: String)
+    fun deleteGlobalDetailById(id: Int)
 
     @Query("DELETE FROM global_details")
     fun nukeGlobalDetailsTable()

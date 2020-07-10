@@ -3,6 +3,7 @@ package com.carwale.android.carewale_assessment_challenge.app.utils
 object MConstants {
 
     const val CONNECTION_TIME_OUT = 25L
+    const val DEFAULT_PRIMARY_KET_GLOBAL_LIST_TABLE = 0
 
     // server response type
     const val SUCCESS = "SUCCESS"
