@@ -30,8 +30,12 @@ import com.carwale.android.carewale_assessment_challenge.R
 import com.carwale.android.carewale_assessment_challenge.app.model.globalData.CovidGlobalDataResponse
 import com.carwale.android.carewale_assessment_challenge.app.room.entities.CountryDetails
 import com.carwale.android.carewale_assessment_challenge.app.room.entities.GlobalDetails
+import java.text.NumberFormat
 import java.util.concurrent.TimeUnit
 
+inline fun formatNumber(number: Long?) : String{
+    return NumberFormat.getNumberInstance(Locale.US).format(number)
+}
 
 inline fun CovidGlobalDataResponse.convertToDbModel(response: CovidGlobalDataResponse): GlobalDetails? {
 
@@ -75,7 +79,6 @@ fun ImageView.loadImage(url: String?) {
     Glide.with(context)
         .setDefaultRequestOptions(option)
         .load(url)
-        .error(this.context.getDrawable(R.drawable.ic_baseline_error_outline))
         .into(this)
 }
 

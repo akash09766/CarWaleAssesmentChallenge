@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.carwale.android.carewale_assessment_challenge.app.activity.MainActivity">
+        <activity android:name="com.carwale.android.carewale_assessment_challenge.app.activity.MainActivity"
+            android:label="@string/main_activity_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

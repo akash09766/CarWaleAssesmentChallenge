@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.carwale.android.carewale_assessment_challenge.app.utils.MConstants
+import com.carwale.android.carewale_assessment_challenge.app.utils.formatNumber
 import com.carwale.android.carewale_assessment_challenge.app.utils.showLongSnackBar
 import com.carwale.android.carewale_assessment_challenge.app.viewModel.MainActivityViewModel
 import com.carwale.android.carewale_assessment_challenge.core.ui.ViewState
@@ -46,6 +47,10 @@ class MainActivity : BaseActivity() {
                         TAG,
                         "setObservers: _globalDetailsWithCountry Success totalConfirmed : ${state.data.globalDetails?.totalConfirmed}"
                     )
+
+                    binding.infectedValue.text = formatNumber(state.data.globalDetails?.totalConfirmed)
+                    binding.deathsValue.text =  formatNumber(state.data.globalDetails?.totalDeaths)
+                    binding.recoveredValue.text = formatNumber(state.data.globalDetails?.totalRecovered)
 
                     state.data.countryList.forEach {
                         Log.d(
