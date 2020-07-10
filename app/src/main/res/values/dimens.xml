@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    //CircularProgressDrawable
+    <dimen name="circular_progress_drawable_stroke_width">2dp</dimen>
+    <dimen name="circular_progress_drawable_stroke_radius">10dp</dimen>
+    <dimen name="search_list_item_spacing">10dp</dimen>
+</resources>

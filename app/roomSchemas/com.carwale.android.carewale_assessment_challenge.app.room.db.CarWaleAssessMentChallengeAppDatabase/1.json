@@ -1,0 +1,144 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "f2777605416870d3bb832114b51d9a5a",
+    "entities": [
+      {
+        "tableName": "global_details",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `new_confirmed` INTEGER, `total_confirmed` INTEGER, `new_deaths` INTEGER, `total_deaths` INTEGER, `new_recovered` INTEGER, `total_recovered` INTEGER, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "newConfirmed",
+            "columnName": "new_confirmed",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "totalConfirmed",
+            "columnName": "total_confirmed",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "newDeaths",
+            "columnName": "new_deaths",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "totalDeaths",
+            "columnName": "total_deaths",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "newRecovered",
+            "columnName": "new_recovered",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "totalRecovered",
+            "columnName": "total_recovered",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "country_list_details",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`country_name` TEXT NOT NULL, `country_code` TEXT, `slug` TEXT, `new_confirmed` INTEGER, `total_confirmed` INTEGER, `new_deaths` INTEGER, `total_deaths` INTEGER, `new_recovered` INTEGER, `total_recovered` INTEGER, `parent_id` INTEGER NOT NULL, PRIMARY KEY(`country_name`))",
+        "fields": [
+          {
+            "fieldPath": "countryName",
+            "columnName": "country_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "countryCode",
+            "columnName": "country_code",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "slug",
+            "columnName": "slug",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "newConfirmed",
+            "columnName": "new_confirmed",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "totalConfirmed",
+            "columnName": "total_confirmed",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "newDeaths",
+            "columnName": "new_deaths",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "totalDeaths",
+            "columnName": "total_deaths",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "newRecovered",
+            "columnName": "new_recovered",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "totalRecovered",
+            "columnName": "total_recovered",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "parentId",
+            "columnName": "parent_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "country_name"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f2777605416870d3bb832114b51d9a5a')"
+    ]
+  }
+}
