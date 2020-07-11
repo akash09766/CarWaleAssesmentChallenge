@@ -5,6 +5,14 @@ object MConstants {
     const val CONNECTION_TIME_OUT = 25L
     const val DEFAULT_PRIMARY_KET_GLOBAL_LIST_TABLE = 0
 
+    const val LOCATION_SORT_CATEGORY = 1
+    const val INFECTED_SORT_CATEGORY = 2
+    const val DEATH_SORT_CATEGORY = 3
+    const val RECOVERED_SORT_CATEGORY = 4
+
+    const val ASCENDING_SORT = 1
+    const val DESCENDING_SORT = 2
+
     // server response type
     const val SUCCESS = "SUCCESS"
     const val FAILED = "FAILED"

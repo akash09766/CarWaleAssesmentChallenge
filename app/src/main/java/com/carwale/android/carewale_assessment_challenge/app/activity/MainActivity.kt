@@ -2,8 +2,8 @@ package com.carwale.android.carewale_assessment_challenge.app.activity
 
 import android.os.Bundle
 import android.util.Log
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.carwale.android.carewale_assessment_challenge.app.adapter.CountryListAdapter
 import com.carwale.android.carewale_assessment_challenge.app.utils.MConstants
 import com.carwale.android.carewale_assessment_challenge.app.utils.formatNumber
 import com.carwale.android.carewale_assessment_challenge.app.utils.showLongSnackBar
@@ -22,16 +22,23 @@ class MainActivity : BaseActivity() {
 
     private val binding by viewBinding(ActivityMainBinding::inflate)
     private val viewModel by lazy { getViewModel<MainActivityViewModel>() }
-    private lateinit var gridLayoutManager: GridLayoutManager
-    private lateinit var scrollListener: RecyclerView.OnScrollListener
 
+    private val  countryListAdapter = CountryListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(binding.root)
+        initView()
         getData()
         setObservers()
+    }
+
+    private fun initView() {
+        binding.countryRecyclerView.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = countryListAdapter
+        }
     }
 
     private fun getData() {
@@ -51,6 +58,8 @@ class MainActivity : BaseActivity() {
                     binding.infectedValue.text = formatNumber(state.data.globalDetails?.totalConfirmed)
                     binding.deathsValue.text =  formatNumber(state.data.globalDetails?.totalDeaths)
                     binding.recoveredValue.text = formatNumber(state.data.globalDetails?.totalRecovered)
+
+                    countryListAdapter.setData(state.data.countryList)
 
                     state.data.countryList.forEach {
                         Log.d(

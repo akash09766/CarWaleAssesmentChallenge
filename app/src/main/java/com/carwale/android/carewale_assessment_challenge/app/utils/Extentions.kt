@@ -49,12 +49,12 @@ inline fun CovidGlobalDataResponse.convertToDbModel(response: CovidGlobalDataRes
 
     response.countries?.forEach {
        globalDetails.countryList?.add(CountryDetails(countryName = it!!.country,countryCode = it?.countryCode,slug = it?.slug,
-           newConfirmed = response.global.newConfirmed,
-           totalConfirmed = response.global.totalConfirmed,
-           newDeaths = response.global.newDeaths,
-           totalDeaths = response.global.totalDeaths,
-           newRecovered = response.global.newRecovered,
-           totalRecovered = response.global.totalRecovered))
+           newConfirmed = it.newConfirmed,
+           totalConfirmed = it.totalConfirmed,
+           newDeaths = it.newDeaths,
+           totalDeaths = it.totalDeaths,
+           newRecovered = it.newRecovered,
+           totalRecovered = it.totalRecovered))
    }
     Log.d("Extention", "convertToDbModel: size : ${globalDetails.countryList?.size}")
     return globalDetails
