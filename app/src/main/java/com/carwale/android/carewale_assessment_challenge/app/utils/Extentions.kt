@@ -34,44 +34,65 @@ import com.carwale.android.carewale_assessment_challenge.app.room.entities.Globa
 import java.text.NumberFormat
 import java.util.concurrent.TimeUnit
 
-inline fun sortCountry(sortFilterData: SortFilterData, countryDetailsList : List<CountryDetails>): List<CountryDetails>{
+inline fun sortFilterCountry(
+    sortFilterData: SortFilterData,
+    countryDetailsList: List<CountryDetails>
+): List<CountryDetails> {
+    var localCountryDetailsList: List<CountryDetails> = ArrayList()
+
+    if (sortFilterData.maxInfectedSelected > MConstants.DEFAULT_INITIAL_MAX_VALUE_SORT_FILTER_DATA ||
+        sortFilterData.maxDeathSelected > MConstants.DEFAULT_INITIAL_MAX_VALUE_SORT_FILTER_DATA ||
+        sortFilterData.maxRecoveredSelected > MConstants.DEFAULT_INITIAL_MAX_VALUE_SORT_FILTER_DATA
+    ) {
+        Log.d("Extention", "sortCountry: performing filter")
+        localCountryDetailsList = countryDetailsList.filter {
+            (
+                    it.totalConfirmed!! >= sortFilterData.minInfectedSelected && it.totalConfirmed!! <= sortFilterData.maxInfectedSelected
+                            &&
+                            it.totalDeaths!! >= sortFilterData.minDeathSelected && it.totalDeaths!! <= sortFilterData.maxDeathSelected
+                            &&
+                            it.totalRecovered!! >= sortFilterData.minRecoveredSelected && it.totalRecovered!! <= sortFilterData.maxRecoveredSelected)
+        }
+    } else {
+        localCountryDetailsList = countryDetailsList
+    }
 
     when (sortFilterData.sortCategory) {
         MConstants.LOCATION_SORT_CATEGORY -> {
             return if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
-                countryDetailsList.sortedBy { it.countryName }
+                localCountryDetailsList.sortedBy { it.countryName }
             } else {
-                countryDetailsList.sortedByDescending { it.countryName }
+                localCountryDetailsList.sortedByDescending { it.countryName }
             }
         }
         MConstants.INFECTED_SORT_CATEGORY -> {
             return if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
-                countryDetailsList.sortedBy { it.totalConfirmed }
+                localCountryDetailsList.sortedBy { it.totalConfirmed }
             } else {
-                countryDetailsList.sortedByDescending { it.totalConfirmed }
+                localCountryDetailsList.sortedByDescending { it.totalConfirmed }
             }
         }
         MConstants.DEATH_SORT_CATEGORY -> {
             return if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
-                countryDetailsList.sortedBy { it.totalDeaths }
+                localCountryDetailsList.sortedBy { it.totalDeaths }
             } else {
-                countryDetailsList.sortedByDescending { it.totalDeaths }
+                localCountryDetailsList.sortedByDescending { it.totalDeaths }
             }
         }
         MConstants.RECOVERED_SORT_CATEGORY -> {
             return if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
-                countryDetailsList.sortedBy { it.totalRecovered }
+                localCountryDetailsList.sortedBy { it.totalRecovered }
             } else {
-                countryDetailsList.sortedByDescending { it.totalRecovered }
+                localCountryDetailsList.sortedByDescending { it.totalRecovered }
             }
         }
         else -> {
-            return countryDetailsList
+            return localCountryDetailsList
         }
     }
 }
 
-inline fun formatNumber(number: Long?) : String{
+inline fun formatNumber(number: Long?): String {
     return NumberFormat.getNumberInstance(Locale.US).format(number)
 }
 
@@ -83,17 +104,22 @@ inline fun CovidGlobalDataResponse.convertToDbModel(response: CovidGlobalDataRes
         newDeaths = response.global.newDeaths,
         totalDeaths = response.global.totalDeaths,
         newRecovered = response.global.newRecovered,
-        totalRecovered = response.global.totalRecovered)
+        totalRecovered = response.global.totalRecovered
+    )
 
     response.countries?.forEach {
-       globalDetails.countryList?.add(CountryDetails(countryName = it!!.country,countryCode = it?.countryCode,slug = it?.slug,
-           newConfirmed = it.newConfirmed,
-           totalConfirmed = it.totalConfirmed,
-           newDeaths = it.newDeaths,
-           totalDeaths = it.totalDeaths,
-           newRecovered = it.newRecovered,
-           totalRecovered = it.totalRecovered))
-   }
+        globalDetails.countryList?.add(
+            CountryDetails(
+                countryName = it!!.country, countryCode = it?.countryCode, slug = it?.slug,
+                newConfirmed = it.newConfirmed,
+                totalConfirmed = it.totalConfirmed,
+                newDeaths = it.newDeaths,
+                totalDeaths = it.totalDeaths,
+                newRecovered = it.newRecovered,
+                totalRecovered = it.totalRecovered
+            )
+        )
+    }
     Log.d("Extention", "convertToDbModel: size : ${globalDetails.countryList?.size}")
     return globalDetails
 }

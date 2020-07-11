@@ -11,12 +11,12 @@ class SortFilterData {
     var globalDeath: Long = 0
     var globalRecovered: Long = 0
 
-    var minInfectedSelected: Long = 0
-    var maxInfectedSelected: Long = 0
+    var minInfectedSelected: Long = MConstants.DEFAULT_INITIAL_MIN_VALUE_SORT_FILTER_DATA
+    var maxInfectedSelected: Long = MConstants.DEFAULT_INITIAL_MAX_VALUE_SORT_FILTER_DATA
 
-    var minDeathSelected: Long = 0
-    var maxDeathSelected: Long = 0
+    var minDeathSelected: Long = MConstants.DEFAULT_INITIAL_MIN_VALUE_SORT_FILTER_DATA
+    var maxDeathSelected: Long = MConstants.DEFAULT_INITIAL_MAX_VALUE_SORT_FILTER_DATA
 
-    var minRecoveredSelected: Long = 0
-    var maxRecoveredSelected: Long = 0
+    var minRecoveredSelected: Long = MConstants.DEFAULT_INITIAL_MIN_VALUE_SORT_FILTER_DATA
+    var maxRecoveredSelected: Long = MConstants.DEFAULT_INITIAL_MAX_VALUE_SORT_FILTER_DATA
 }

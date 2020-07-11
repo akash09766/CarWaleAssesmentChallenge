@@ -210,6 +210,7 @@ class MainActivity : BaseActivity() {
             )
 
         val filterDoneBtn = bottomView.findViewById(R.id.filter_done_btn) as MaterialButton
+        val clearAllFilterBtn = bottomView.findViewById(R.id.clear_filter_btn) as MaterialButton
 
         // ------------------------------ infected filter section ------------------------------
         val infectedRangeSlider = bottomView.findViewById(R.id.infected_range_slider) as RangeSlider
@@ -221,7 +222,7 @@ class MainActivity : BaseActivity() {
         infectedRangeSlider.valueFrom = 0.toFloat()
         infectedRangeSlider.valueTo = viewModel.getSortFilterData().globalInfected.toFloat()
 
-        if (viewModel.getSortFilterData().maxInfectedSelected == 0L) {
+        if (viewModel.getSortFilterData().maxInfectedSelected == MConstants.DEFAULT_INITIAL_MAX_VALUE_SORT_FILTER_DATA) {
             selectedInfectedMinValue.text = 0.toString()
             selectedInfectedMaxValue.text = viewModel.getSortFilterData().globalInfected.toString()
             infectedRangeSlider.values = listOf(0F, viewModel.getSortFilterData().globalInfected.toFloat())
@@ -247,7 +248,7 @@ class MainActivity : BaseActivity() {
         deathRangeSlider.valueFrom = 0.toFloat()
         deathRangeSlider.valueTo = viewModel.getSortFilterData().globalDeath.toFloat()
 
-        if (viewModel.getSortFilterData().maxDeathSelected == 0L) {
+        if (viewModel.getSortFilterData().maxDeathSelected == MConstants.DEFAULT_INITIAL_MAX_VALUE_SORT_FILTER_DATA) {
             selectedDeathMinValue.text = 0.toString()
             selectedDeathMaxValue.text = viewModel.getSortFilterData().globalDeath.toString()
             deathRangeSlider.values = listOf(0F, viewModel.getSortFilterData().globalDeath.toFloat())
@@ -273,7 +274,7 @@ class MainActivity : BaseActivity() {
         recoveredRangeSlider.valueFrom = 0.toFloat()
         recoveredRangeSlider.valueTo = viewModel.getSortFilterData().globalRecovered.toFloat()
 
-        if (viewModel.getSortFilterData().maxRecoveredSelected == 0L) {
+        if (viewModel.getSortFilterData().maxRecoveredSelected == MConstants.DEFAULT_INITIAL_MAX_VALUE_SORT_FILTER_DATA) {
             selectedRecoveredMinValue.text = 0.toString()
             selectedRecoveredMaxValue.text = viewModel.getSortFilterData().globalRecovered.toString()
             recoveredRangeSlider.values = listOf(0F, viewModel.getSortFilterData().globalRecovered.toFloat())
@@ -303,6 +304,23 @@ class MainActivity : BaseActivity() {
             Log.d(TAG, "showFilterBottomSheet: Min recovered : ${recoveredRangeSlider.values[0].toLong()} and Max recovered : ${recoveredRangeSlider.values[1].toLong()}")
             sortFilterData.minRecoveredSelected = recoveredRangeSlider.values[0].toLong()
             sortFilterData.maxRecoveredSelected = recoveredRangeSlider.values[1].toLong()
+
+            viewModel.setSortFilterData(sortFilterData)
+
+            hideFilterBottomSheet()
+        }
+
+        clearAllFilterBtn.setOnClickListener {
+            val sortFilterData = viewModel.getSortFilterData()
+
+            sortFilterData.maxInfectedSelected = MConstants.DEFAULT_INITIAL_MAX_VALUE_SORT_FILTER_DATA
+            sortFilterData.minInfectedSelected = MConstants.DEFAULT_INITIAL_MIN_VALUE_SORT_FILTER_DATA
+
+            sortFilterData.maxDeathSelected = MConstants.DEFAULT_INITIAL_MAX_VALUE_SORT_FILTER_DATA
+            sortFilterData.minDeathSelected = MConstants.DEFAULT_INITIAL_MIN_VALUE_SORT_FILTER_DATA
+
+            sortFilterData.maxRecoveredSelected = MConstants.DEFAULT_INITIAL_MAX_VALUE_SORT_FILTER_DATA
+            sortFilterData.minRecoveredSelected = MConstants.DEFAULT_INITIAL_MIN_VALUE_SORT_FILTER_DATA
 
             viewModel.setSortFilterData(sortFilterData)
 

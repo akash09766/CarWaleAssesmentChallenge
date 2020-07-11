@@ -9,7 +9,7 @@ import com.carwale.android.carewale_assessment_challenge.app.model.globalData.Co
 import com.carwale.android.carewale_assessment_challenge.app.model.sortingAndFilter.SortFilterData
 import com.carwale.android.carewale_assessment_challenge.app.room.entities.GlobalDetailsWithCountry
 import com.carwale.android.carewale_assessment_challenge.app.utils.MConstants
-import com.carwale.android.carewale_assessment_challenge.app.utils.sortCountry
+import com.carwale.android.carewale_assessment_challenge.app.utils.sortFilterCountry
 import com.carwale.android.carewale_assessment_challenge.core.ui.ViewState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -58,12 +58,19 @@ class MainActivityViewModel @Inject constructor(private val dataRepository: Data
                 when (globalDetailsWithCountryState) {
                     is ViewState.Success -> {
 
-                        sortFilterData.globalInfected = globalDetailsWithCountryState.data.globalDetails?.totalConfirmed!!
-                        sortFilterData.globalDeath = globalDetailsWithCountryState.data.globalDetails?.totalDeaths!!
-                        sortFilterData.globalRecovered = globalDetailsWithCountryState.data.globalDetails?.totalRecovered!!
+                        sortFilterData.globalInfected =
+                            globalDetailsWithCountryState.data.globalDetails?.totalConfirmed!!
+                        sortFilterData.globalDeath =
+                            globalDetailsWithCountryState.data.globalDetails?.totalDeaths!!
+                        sortFilterData.globalRecovered =
+                            globalDetailsWithCountryState.data.globalDetails?.totalRecovered!!
 
-                        globalDetailsWithCountryState.data.countryList = sortCountry(sortFilterData = sortFilterData,countryDetailsList = globalDetailsWithCountryState.data.countryList)
-                        globalDetailsWithCountry.value = ViewState.Success(globalDetailsWithCountryState.data)
+                        globalDetailsWithCountryState.data.countryList = sortFilterCountry(
+                            sortFilterData = sortFilterData,
+                            countryDetailsList = globalDetailsWithCountryState.data.countryList
+                        )
+                        globalDetailsWithCountry.value =
+                            ViewState.Success(globalDetailsWithCountryState.data)
                     }
                     is ViewState.Loading -> {
                         globalDetailsWithCountry.value =
