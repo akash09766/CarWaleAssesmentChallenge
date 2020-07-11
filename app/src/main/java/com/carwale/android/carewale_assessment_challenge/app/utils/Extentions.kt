@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.carwale.android.carewale_assessment_challenge.app.utils
 
 import android.content.Context
@@ -22,16 +24,52 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.snackbar.Snackbar
-import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.util.*
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.carwale.android.carewale_assessment_challenge.R
 import com.carwale.android.carewale_assessment_challenge.app.model.globalData.CovidGlobalDataResponse
+import com.carwale.android.carewale_assessment_challenge.app.model.sortingAndFilter.SortFilterData
 import com.carwale.android.carewale_assessment_challenge.app.room.entities.CountryDetails
 import com.carwale.android.carewale_assessment_challenge.app.room.entities.GlobalDetails
 import java.text.NumberFormat
 import java.util.concurrent.TimeUnit
+
+inline fun sortCountry(sortFilterData: SortFilterData, countryDetailsList : List<CountryDetails>): List<CountryDetails>{
+
+    when (sortFilterData.sortCategory) {
+        MConstants.LOCATION_SORT_CATEGORY -> {
+            return if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
+                countryDetailsList.sortedBy { it.countryName }
+            } else {
+                countryDetailsList.sortedByDescending { it.countryName }
+            }
+        }
+        MConstants.INFECTED_SORT_CATEGORY -> {
+            return if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
+                countryDetailsList.sortedBy { it.totalConfirmed }
+            } else {
+                countryDetailsList.sortedByDescending { it.totalConfirmed }
+            }
+        }
+        MConstants.DEATH_SORT_CATEGORY -> {
+            return if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
+                countryDetailsList.sortedBy { it.totalDeaths }
+            } else {
+                countryDetailsList.sortedByDescending { it.totalDeaths }
+            }
+        }
+        MConstants.RECOVERED_SORT_CATEGORY -> {
+            return if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
+                countryDetailsList.sortedBy { it.totalRecovered }
+            } else {
+                countryDetailsList.sortedByDescending { it.totalRecovered }
+            }
+        }
+        else -> {
+            return countryDetailsList
+        }
+    }
+}
 
 inline fun formatNumber(number: Long?) : String{
     return NumberFormat.getNumberInstance(Locale.US).format(number)
@@ -246,39 +284,15 @@ fun getConnectionType(context: Context): ConnectionType {
             }
         }
     }
-//    Log.d("Extension File", "getConnectionType : $result")
     return result
 }
 
-
-fun String.convert24HourTimeTo12HourFormat(timeIn24HourFormat: String): String {
-    val timeFormatIn24: DateFormat =
-        SimpleDateFormat("HH:mm:ss", Locale.ENGLISH)
-    val timeFormatIn12: DateFormat =
-        SimpleDateFormat("hh:mm a", Locale.ENGLISH)
-    return timeFormatIn12.format(timeFormatIn24.parse(timeIn24HourFormat))
-}
-
-fun String.convertDateTimeToReadableFormat(dateTime: String, dateTimeFormat: String): String {
-    val originalDateTimeFormat: DateFormat =
-        SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH)
-    val wantToConvertToDateTimeFormat: DateFormat =
-        SimpleDateFormat(dateTimeFormat, Locale.ENGLISH)
-    return wantToConvertToDateTimeFormat.format(originalDateTimeFormat.parse(dateTime))
-}
-
-fun convertDateToReadableFormat(dateTime: Date, dateTimeFormat: String): String {
-    val wantToConvertToDateTimeFormat: DateFormat =
-        SimpleDateFormat(dateTimeFormat, Locale.ENGLISH)
-    return wantToConvertToDateTimeFormat.format(dateTime.time)
-}
-
 fun String.isInternetError(): Int {
-    if (this == MConstants.TRY_AGAIN) {
-        return MConstants.WENT_WRONG_ID
+    return if (this == MConstants.TRY_AGAIN) {
+        MConstants.WENT_WRONG_ID
     } else if (this == MConstants.NOT_CONNECTED_TO_INTERNET || this == MConstants.NO_INTERNET) {
-        return MConstants.NETWORK_ERROR__ID
+        MConstants.NETWORK_ERROR__ID
     } else {
-        return MConstants.BACKEND_ERROR__ID
+        MConstants.BACKEND_ERROR__ID
     }
 }
