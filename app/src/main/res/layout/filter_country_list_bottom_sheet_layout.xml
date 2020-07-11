@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12" />
+
+    <TextView
+        android:id="@+id/sort_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filter"
+        android:textColor="@color/button_inactive_color"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/divider06"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider06"
+        android:layout_width="match_parent"
+        android:layout_height="1.0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/global_layout_border_color"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+
+    <TextView
+        android:id="@+id/infected_filter_category_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Infected"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/divider06"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <TextView
+        android:id="@+id/infected_filter_min_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/button_inactive_color"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/infected_filter_category_title"
+        app:layout_constraintTop_toBottomOf="@+id/infected_filter_category_title" />
+
+    <TextView
+        android:id="@+id/infected_filter_min_max_separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="-"
+        android:textColor="@color/button_inactive_color"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/infected_filter_min_value"
+        app:layout_constraintTop_toBottomOf="@+id/infected_filter_category_title" />
+
+
+    <TextView
+        android:id="@+id/infected_filter_max_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="12312331"
+        android:textColor="@color/button_inactive_color"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/infected_filter_min_max_separator"
+        app:layout_constraintTop_toBottomOf="@+id/infected_filter_category_title" />
+
+
+    <com.google.android.material.slider.RangeSlider
+        android:id="@+id/infected_range_slider"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:valueFrom="0"
+        app:labelBehavior="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/infected_filter_max_value" />
+
+
+    <TextView
+        android:id="@+id/death_filter_category_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Death"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/divider06"
+        app:layout_constraintTop_toBottomOf="@+id/infected_range_slider" />
+
+    <TextView
+        android:id="@+id/death_filter_min_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/button_inactive_color"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/death_filter_category_title"
+        app:layout_constraintTop_toBottomOf="@+id/death_filter_category_title" />
+
+    <TextView
+        android:id="@+id/death_filter_min_max_separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="-"
+        android:textColor="@color/button_inactive_color"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/death_filter_min_value"
+        app:layout_constraintTop_toBottomOf="@+id/death_filter_category_title" />
+
+
+    <TextView
+        android:id="@+id/death_filter_max_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="12312331"
+        android:textColor="@color/button_inactive_color"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/death_filter_min_max_separator"
+        app:layout_constraintTop_toBottomOf="@+id/death_filter_category_title" />
+
+
+    <com.google.android.material.slider.RangeSlider
+        android:id="@+id/death_range_slider"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:valueFrom="0"
+        app:labelBehavior="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/death_filter_max_value" />
+
+    <TextView
+        android:id="@+id/recovered_filter_category_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Death"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/divider06"
+        app:layout_constraintTop_toBottomOf="@+id/death_range_slider" />
+
+    <TextView
+        android:id="@+id/recovered_filter_min_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/button_inactive_color"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/recovered_filter_category_title"
+        app:layout_constraintTop_toBottomOf="@+id/recovered_filter_category_title" />
+
+    <TextView
+        android:id="@+id/recovered_filter_min_max_separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="-"
+        android:textColor="@color/button_inactive_color"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/recovered_filter_min_value"
+        app:layout_constraintTop_toBottomOf="@+id/recovered_filter_category_title" />
+
+
+    <TextView
+        android:id="@+id/recovered_filter_max_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="12312331"
+        android:textColor="@color/button_inactive_color"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/recovered_filter_min_max_separator"
+        app:layout_constraintTop_toBottomOf="@+id/recovered_filter_category_title" />
+
+
+    <com.google.android.material.slider.RangeSlider
+        android:id="@+id/recovered_range_slider"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:valueFrom="0"
+        app:labelBehavior="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recovered_filter_max_value" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/filter_done_btn"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="0dp"
+        android:layout_height="?actionBarSize"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="10dp"
+        android:text="Done"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recovered_range_slider" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

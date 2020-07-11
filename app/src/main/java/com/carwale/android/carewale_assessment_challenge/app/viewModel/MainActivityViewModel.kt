@@ -57,6 +57,11 @@ class MainActivityViewModel @Inject constructor(private val dataRepository: Data
             dataRepository.getCovidDataFromDB(id = id).collect { globalDetailsWithCountryState ->
                 when (globalDetailsWithCountryState) {
                     is ViewState.Success -> {
+
+                        sortFilterData.globalInfected = globalDetailsWithCountryState.data.globalDetails?.totalConfirmed!!
+                        sortFilterData.globalDeath = globalDetailsWithCountryState.data.globalDetails?.totalDeaths!!
+                        sortFilterData.globalRecovered = globalDetailsWithCountryState.data.globalDetails?.totalRecovered!!
+
                         globalDetailsWithCountryState.data.countryList = sortCountry(sortFilterData = sortFilterData,countryDetailsList = globalDetailsWithCountryState.data.countryList)
                         globalDetailsWithCountry.value = ViewState.Success(globalDetailsWithCountryState.data)
                     }

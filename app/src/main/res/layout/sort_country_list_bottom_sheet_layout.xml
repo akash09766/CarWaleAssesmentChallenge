@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Sort Category"
+        android:text="Category"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/divider06"
@@ -58,7 +58,7 @@
         android:id="@+id/sort_order_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sort Order"
+        android:text="Order"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/sort_category_title"
@@ -79,7 +79,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/location_sort_category"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Location"
             android:textAllCaps="false" />
@@ -87,7 +87,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/infected_sort_category"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Infected"
             android:textAllCaps="false" />
@@ -95,7 +95,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/death_sort_category"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Death"
             android:textAllCaps="false" />
@@ -103,7 +103,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/recovered_sort_category"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Recovered"
             android:textAllCaps="false" />
@@ -123,7 +123,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/ascending_sort_order"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ascending"
             android:textAllCaps="false" />
@@ -131,7 +131,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/descending_sort_order"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Descending"
             android:textAllCaps="false" />

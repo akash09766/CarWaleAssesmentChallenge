@@ -2,10 +2,10 @@ package com.carwale.android.carewale_assessment_challenge.app.activity
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.carwale.android.carewale_assessment_challenge.R
 import com.carwale.android.carewale_assessment_challenge.app.adapter.CountryListAdapter
-import com.carwale.android.carewale_assessment_challenge.app.model.sortingAndFilter.SortFilterData
 import com.carwale.android.carewale_assessment_challenge.app.utils.MConstants
 import com.carwale.android.carewale_assessment_challenge.app.utils.formatNumber
 import com.carwale.android.carewale_assessment_challenge.app.utils.showLongSnackBar
@@ -20,6 +20,7 @@ import com.carwale.android.carewale_assessment_challenge.databinding.ActivityMai
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
+import com.google.android.material.slider.RangeSlider
 
 class MainActivity : BaseActivity() {
 
@@ -29,7 +30,8 @@ class MainActivity : BaseActivity() {
     private val viewModel by lazy { getViewModel<MainActivityViewModel>() }
 
     private val countryListAdapter = CountryListAdapter()
-    private lateinit var mCustomSelectProfilePicBottomSheetDialog: BottomSheetDialog
+    private lateinit var sortBottomSheetDialog: BottomSheetDialog
+    private lateinit var filterBottomSheetDialog: BottomSheetDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,11 +109,14 @@ class MainActivity : BaseActivity() {
 
     private fun setListeners() {
         binding.sortBtn.setOnClickListener {
-            showBottomSheet()
+            showSortBottomSheet()
+        }
+        binding.filterBtn.setOnClickListener {
+            showFilterBottomSheet()
         }
     }
 
-    private fun showBottomSheet() {
+    private fun showSortBottomSheet() {
         val bottomView =
             this.layoutInflater.inflate(
                 R.layout.sort_country_list_bottom_sheet_layout,
@@ -158,7 +163,7 @@ class MainActivity : BaseActivity() {
 
         sortDoneBtn.setOnClickListener {
 
-            val sortFilterData = SortFilterData()
+            val sortFilterData = viewModel.getSortFilterData()
 
             when (sortCategoryGroup.checkedButtonId) {
                 R.id.location_sort_category -> {
@@ -188,17 +193,136 @@ class MainActivity : BaseActivity() {
 
             viewModel.setSortFilterData(sortFilterData)
 
-            hideBottomSheet()
+            hideSortBottomSheet()
         }
 
-        mCustomSelectProfilePicBottomSheetDialog = BottomSheetDialog(this)
-        mCustomSelectProfilePicBottomSheetDialog.setContentView(bottomView)
-        mCustomSelectProfilePicBottomSheetDialog.show()
+        sortBottomSheetDialog = BottomSheetDialog(this)
+        sortBottomSheetDialog.setContentView(bottomView)
+        sortBottomSheetDialog.show()
     }
 
-    private fun hideBottomSheet() {
-        if (::mCustomSelectProfilePicBottomSheetDialog.isInitialized) {
-            mCustomSelectProfilePicBottomSheetDialog.dismiss()
+    private fun showFilterBottomSheet() {
+        val bottomView =
+            this.layoutInflater.inflate(
+                R.layout.filter_country_list_bottom_sheet_layout,
+                binding.root,
+                false
+            )
+
+        val filterDoneBtn = bottomView.findViewById(R.id.filter_done_btn) as MaterialButton
+
+        // ------------------------------ infected filter section ------------------------------
+        val infectedRangeSlider = bottomView.findViewById(R.id.infected_range_slider) as RangeSlider
+        val selectedInfectedMinValue =
+            bottomView.findViewById(R.id.infected_filter_min_value) as TextView
+        val selectedInfectedMaxValue =
+            bottomView.findViewById(R.id.infected_filter_max_value) as TextView
+
+        infectedRangeSlider.valueFrom = 0.toFloat()
+        infectedRangeSlider.valueTo = viewModel.getSortFilterData().globalInfected.toFloat()
+
+        if (viewModel.getSortFilterData().maxInfectedSelected == 0L) {
+            selectedInfectedMinValue.text = 0.toString()
+            selectedInfectedMaxValue.text = viewModel.getSortFilterData().globalInfected.toString()
+            infectedRangeSlider.values = listOf(0F, viewModel.getSortFilterData().globalInfected.toFloat())
+        } else {
+            selectedInfectedMinValue.text = 0.toString()
+            selectedInfectedMaxValue.text = viewModel.getSortFilterData().maxInfectedSelected.toString()
+            infectedRangeSlider.values = listOf(viewModel.getSortFilterData().minInfectedSelected.toFloat(), viewModel.getSortFilterData().maxInfectedSelected.toFloat())
+        }
+
+        infectedRangeSlider.addOnChangeListener { rangeSlider, _, _ ->
+            Log.d(TAG, "showFilterBottomSheet: infectedRangeSlider min : ${rangeSlider.values}")
+            selectedInfectedMinValue.text = rangeSlider.values[0].toLong().toString()
+            selectedInfectedMaxValue.text = rangeSlider.values[1].toLong().toString()
+        }
+
+        // ------------------------------ death filter section ------------------------------
+        val deathRangeSlider = bottomView.findViewById(R.id.death_range_slider) as RangeSlider
+        val selectedDeathMinValue =
+            bottomView.findViewById(R.id.death_filter_min_value) as TextView
+        val selectedDeathMaxValue =
+            bottomView.findViewById(R.id.death_filter_max_value) as TextView
+
+        deathRangeSlider.valueFrom = 0.toFloat()
+        deathRangeSlider.valueTo = viewModel.getSortFilterData().globalDeath.toFloat()
+
+        if (viewModel.getSortFilterData().maxDeathSelected == 0L) {
+            selectedDeathMinValue.text = 0.toString()
+            selectedDeathMaxValue.text = viewModel.getSortFilterData().globalDeath.toString()
+            deathRangeSlider.values = listOf(0F, viewModel.getSortFilterData().globalDeath.toFloat())
+        } else {
+            selectedDeathMinValue.text = 0.toString()
+            selectedDeathMaxValue.text = viewModel.getSortFilterData().maxDeathSelected.toString()
+            deathRangeSlider.values = listOf(viewModel.getSortFilterData().minDeathSelected.toFloat(), viewModel.getSortFilterData().maxDeathSelected.toFloat())
+        }
+
+        deathRangeSlider.addOnChangeListener { rangeSlider, _, _ ->
+            Log.d(TAG, "showFilterBottomSheet: deathRangeSlider min : ${rangeSlider.values}")
+            selectedDeathMinValue.text = rangeSlider.values[0].toLong().toString()
+            selectedDeathMaxValue.text = rangeSlider.values[1].toLong().toString()
+        }
+
+        // ------------------------------ recovered filter section ------------------------------
+        val recoveredRangeSlider = bottomView.findViewById(R.id.recovered_range_slider) as RangeSlider
+        val selectedRecoveredMinValue =
+            bottomView.findViewById(R.id.recovered_filter_min_value) as TextView
+        val selectedRecoveredMaxValue =
+            bottomView.findViewById(R.id.recovered_filter_max_value) as TextView
+
+        recoveredRangeSlider.valueFrom = 0.toFloat()
+        recoveredRangeSlider.valueTo = viewModel.getSortFilterData().globalRecovered.toFloat()
+
+        if (viewModel.getSortFilterData().maxRecoveredSelected == 0L) {
+            selectedRecoveredMinValue.text = 0.toString()
+            selectedRecoveredMaxValue.text = viewModel.getSortFilterData().globalRecovered.toString()
+            recoveredRangeSlider.values = listOf(0F, viewModel.getSortFilterData().globalRecovered.toFloat())
+        } else {
+            selectedRecoveredMinValue.text = 0.toString()
+            selectedRecoveredMaxValue.text = viewModel.getSortFilterData().maxRecoveredSelected.toString()
+            recoveredRangeSlider.values = listOf(viewModel.getSortFilterData().minRecoveredSelected.toFloat(), viewModel.getSortFilterData().maxRecoveredSelected.toFloat())
+        }
+
+        recoveredRangeSlider.addOnChangeListener { rangeSlider, _, _ ->
+            Log.d(TAG, "showFilterBottomSheet: recoveredRangeSlider min : ${rangeSlider.values}")
+            selectedRecoveredMinValue.text = rangeSlider.values[0].toLong().toString()
+            selectedRecoveredMaxValue.text = rangeSlider.values[1].toLong().toString()
+        }
+
+        filterDoneBtn.setOnClickListener {
+
+            val sortFilterData = viewModel.getSortFilterData()
+            Log.d(TAG, "showFilterBottomSheet: Min infected : ${infectedRangeSlider.values[0].toLong()} and Max infected : ${infectedRangeSlider.values[1].toLong()}")
+            sortFilterData.minInfectedSelected = infectedRangeSlider.values[0].toLong()
+            sortFilterData.maxInfectedSelected = infectedRangeSlider.values[1].toLong()
+
+            Log.d(TAG, "showFilterBottomSheet: Min death : ${deathRangeSlider.values[0].toLong()} and Max death : ${deathRangeSlider.values[1].toLong()}")
+            sortFilterData.minDeathSelected = deathRangeSlider.values[0].toLong()
+            sortFilterData.maxDeathSelected = deathRangeSlider.values[1].toLong()
+
+            Log.d(TAG, "showFilterBottomSheet: Min recovered : ${recoveredRangeSlider.values[0].toLong()} and Max recovered : ${recoveredRangeSlider.values[1].toLong()}")
+            sortFilterData.minRecoveredSelected = recoveredRangeSlider.values[0].toLong()
+            sortFilterData.maxRecoveredSelected = recoveredRangeSlider.values[1].toLong()
+
+            viewModel.setSortFilterData(sortFilterData)
+
+            hideFilterBottomSheet()
+        }
+
+        filterBottomSheetDialog = BottomSheetDialog(this)
+        filterBottomSheetDialog.setContentView(bottomView)
+        filterBottomSheetDialog.show()
+    }
+
+    private fun hideSortBottomSheet() {
+        if (::sortBottomSheetDialog.isInitialized) {
+            sortBottomSheetDialog.dismiss()
+        }
+    }
+
+    private fun hideFilterBottomSheet() {
+        if (::filterBottomSheetDialog.isInitialized) {
+            filterBottomSheetDialog.dismiss()
         }
     }
 }
