@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_setting_view_margin">
+
+        <TextView
+            android:id="@+id/qr_code_title_tv_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_setting_dialog_title"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/app_setting_title_tv_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/qr_code_msg_tv_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/qr_code_title_tv_id"
+            android:layout_marginTop="@dimen/app_setting_msg_tv_margin_top"
+            android:gravity="left"
+            android:visibility="visible"
+            android:text="@string/app_setting_dialog_msg"
+            android:textSize="@dimen/app_setting_msg_tv_size" />
+
+        <TextView
+            android:id="@+id/qr_code_app_setting_btn_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/qr_code_msg_tv_id"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/app_setting_btn_margin_top"
+            android:gravity="left"
+            android:padding="@dimen/app_setting_btn_padding"
+            android:text="@string/app_setting_dialog_yes_btn_title"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/app_setting_btn_text_size" />
+
+        <TextView
+            android:id="@+id/qr_code_not_now_btn_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/qr_code_msg_tv_id"
+            android:layout_alignBaseline="@+id/qr_code_app_setting_btn_id"
+            android:layout_marginRight="@dimen/app_setting_not_now_btn_margin_right"
+            android:layout_toLeftOf="@+id/qr_code_app_setting_btn_id"
+            android:padding="@dimen/app_setting_not_now_btn_padding"
+            android:text="@string/app_setting_dialog_no_btn_title"
+            android:textSize="@dimen/app_setting_not_now_btn_text_size" />
+
+    </RelativeLayout>
+</RelativeLayout>

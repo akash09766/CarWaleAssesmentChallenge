@@ -41,11 +41,12 @@
 
     <ImageButton
         android:id="@+id/sort_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_marginRight="15dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginRight="10dp"
         android:background="?attr/selectableItemBackground"
+        android:padding="2dp"
+        android:scaleType="fitXY"
         android:src="@drawable/ic_baseline_sort"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
@@ -54,10 +55,11 @@
 
     <ImageButton
         android:id="@+id/filter_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:background="?attr/selectableItemBackground"
+        android:padding="2dp"
+        android:scaleType="fitXY"
         android:src="@drawable/ic_baseline_filter_list"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
@@ -306,8 +308,8 @@
             android:id="@+id/location_list_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginBottom="10dp"
             android:text="Location"
             android:textColor="@android:color/black"
             android:textSize="16sp"
@@ -388,15 +390,67 @@
             app:layout_constraintEnd_toEndOf="@+id/recovered_list_title"
             app:layout_constraintStart_toStartOf="@+id/guideline13" />
 
+        <ProgressBar
+            android:id="@+id/update_progress_circular"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/world_wide_statistic"
+            app:layout_constraintEnd_toEndOf="@+id/world_wide_statistic"
+            app:layout_constraintStart_toStartOf="@+id/world_wide_statistic"
+            app:layout_constraintTop_toTopOf="@+id/world_wide_statistic" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/home_page_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="sort_btn,filter_btn,world_wide_statistic,global_update_title,global_layout,world_wide_statistic_title" />
 
     <ProgressBar
         android:id="@+id/progress_circular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/user_location_msg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:text="@string/user_location_permission_explanation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/allow_location_permission_btn"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/allow_location_permission_btn_title"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/user_location_msg" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/user_location_permission_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="user_location_msg,allow_location_permission_btn" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,7 +35,7 @@ class MainActivityViewModel @Inject constructor(private val dataRepository: Data
 
     fun setSortFilterData(sortFilterData: SortFilterData) {
         this.sortFilterData = sortFilterData
-        getCovidDataFromDb(MConstants.DEFAULT_PRIMARY_KET_GLOBAL_LIST_TABLE)
+        getCovidDataFromDb(MConstants.DEFAULT_PRIMARY_KET_GLOBAL_LIST_TABLE,true)
     }
 
     fun getSortFilterData(): SortFilterData {
@@ -51,8 +51,8 @@ class MainActivityViewModel @Inject constructor(private val dataRepository: Data
         }
     }
 
-    fun getCovidDataFromDb(id: Int) {
-        Log.d(TAG, "getCovidDataFromDb: ")
+    fun getCovidDataFromDb(id: Int,isSortFilterCall : Boolean) {
+        Log.d(TAG, "getCovidDataFromDb: country : ${sortFilterData.countryName}")
         job = CoroutineScope(Dispatchers.Main).launch {
             dataRepository.getCovidDataFromDB(id = id).collect { globalDetailsWithCountryState ->
                 when (globalDetailsWithCountryState) {
@@ -73,6 +73,7 @@ class MainActivityViewModel @Inject constructor(private val dataRepository: Data
                             ViewState.Success(globalDetailsWithCountryState.data)
                     }
                     is ViewState.Loading -> {
+                        if (!isSortFilterCall)
                         globalDetailsWithCountry.value =
                             ViewState.Loading(globalDetailsWithCountryState.data)
                     }

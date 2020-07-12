@@ -18,32 +18,35 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import com.carwale.android.carewale_assessment_challenge.core.ui.base.BaseActivity
-import com.carwale.android.carewale_assessment_challenge.core.ui.base.BaseFragment
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.google.android.material.snackbar.Snackbar
-import java.util.*
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.carwale.android.carewale_assessment_challenge.R
 import com.carwale.android.carewale_assessment_challenge.app.model.globalData.CovidGlobalDataResponse
 import com.carwale.android.carewale_assessment_challenge.app.model.sortingAndFilter.SortFilterData
 import com.carwale.android.carewale_assessment_challenge.app.room.entities.CountryDetails
 import com.carwale.android.carewale_assessment_challenge.app.room.entities.GlobalDetails
+import com.carwale.android.carewale_assessment_challenge.core.ui.base.BaseActivity
+import com.carwale.android.carewale_assessment_challenge.core.ui.base.BaseFragment
+import com.google.android.material.snackbar.Snackbar
 import java.text.NumberFormat
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 inline fun sortFilterCountry(
     sortFilterData: SortFilterData,
     countryDetailsList: List<CountryDetails>
 ): List<CountryDetails> {
-    var localCountryDetailsList: List<CountryDetails> = ArrayList()
+    var localCountryDetailsList: List<CountryDetails>
+    var isFilterOn = false
 
     if (sortFilterData.maxInfectedSelected > MConstants.DEFAULT_INITIAL_MAX_VALUE_SORT_FILTER_DATA ||
         sortFilterData.maxDeathSelected > MConstants.DEFAULT_INITIAL_MAX_VALUE_SORT_FILTER_DATA ||
         sortFilterData.maxRecoveredSelected > MConstants.DEFAULT_INITIAL_MAX_VALUE_SORT_FILTER_DATA
     ) {
+        isFilterOn = true
+
         Log.d("Extention", "sortCountry: performing filter")
         localCountryDetailsList = countryDetailsList.filter {
             (
@@ -59,37 +62,73 @@ inline fun sortFilterCountry(
 
     when (sortFilterData.sortCategory) {
         MConstants.LOCATION_SORT_CATEGORY -> {
-            return if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
+            localCountryDetailsList = if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
                 localCountryDetailsList.sortedBy { it.countryName }
             } else {
                 localCountryDetailsList.sortedByDescending { it.countryName }
             }
         }
         MConstants.INFECTED_SORT_CATEGORY -> {
-            return if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
-                localCountryDetailsList.sortedBy { it.totalConfirmed }
+            if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
+                localCountryDetailsList = localCountryDetailsList.sortedBy { it.totalConfirmed }
             } else {
-                localCountryDetailsList.sortedByDescending { it.totalConfirmed }
+                localCountryDetailsList =
+                    localCountryDetailsList.sortedByDescending { it.totalConfirmed }
             }
         }
         MConstants.DEATH_SORT_CATEGORY -> {
-            return if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
+            localCountryDetailsList = if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
                 localCountryDetailsList.sortedBy { it.totalDeaths }
             } else {
                 localCountryDetailsList.sortedByDescending { it.totalDeaths }
             }
         }
         MConstants.RECOVERED_SORT_CATEGORY -> {
-            return if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
+            localCountryDetailsList = if (sortFilterData.sortOrder == MConstants.ASCENDING_SORT) {
                 localCountryDetailsList.sortedBy { it.totalRecovered }
             } else {
                 localCountryDetailsList.sortedByDescending { it.totalRecovered }
             }
         }
-        else -> {
-            return localCountryDetailsList
+    }
+    if (isFilterOn) {
+        return localCountryDetailsList
+    } else {
+
+        Log.d("Extention", "sortFilterCountry: else ")
+        var positionOfUserCountry = -1
+
+        run loop@{
+            for ((index, value) in localCountryDetailsList.withIndex()) {
+                Log.d("Extention", "sortFilterCountry: sortFilterData.countryName : ${sortFilterData.countryName} and  value.countryName : ${value.countryName}")
+
+                if (sortFilterData.countryName.equals(value.countryName, ignoreCase = true)) {
+                    positionOfUserCountry = index
+                    return@loop
+                }
+            }
+        }
+        Log.d("Extention", "sortFilterCountry: positionOfUserCountry : ${positionOfUserCountry}")
+
+        return if (positionOfUserCountry == -1) {
+            localCountryDetailsList
+        } else {
+            rearrange(localCountryDetailsList, positionOfUserCountry)
         }
     }
+}
+
+inline fun rearrange(items: List<CountryDetails>, index: Int): List<CountryDetails> {
+    val copy: List<CountryDetails>
+    if (index >= 0) {
+        copy = ArrayList(items.size)
+        copy.add(items[index])
+        copy.addAll(items.subList(0, index))
+        copy.addAll(items.subList(index + 1, items.size))
+    } else {
+        return items
+    }
+    return copy
 }
 
 inline fun formatNumber(number: Long?): String {

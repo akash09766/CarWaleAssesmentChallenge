@@ -7,6 +7,8 @@ class SortFilterData {
     var sortCategory = MConstants.LOCATION_SORT_CATEGORY
     var sortOrder = MConstants.ASCENDING_SORT
 
+    var countryName = ""
+
     var globalInfected: Long = 0
     var globalDeath: Long = 0
     var globalRecovered: Long = 0

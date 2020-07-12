@@ -4,5 +4,19 @@
     //CircularProgressDrawable
     <dimen name="circular_progress_drawable_stroke_width">2dp</dimen>
     <dimen name="circular_progress_drawable_stroke_radius">10dp</dimen>
+
     <dimen name="search_list_item_spacing">10dp</dimen>
+
+    <dimen name="app_setting_view_margin">15dp</dimen>
+    <dimen name="app_setting_title_tv_size">18sp</dimen>
+    <dimen name="app_setting_msg_tv_margin_top">15dp</dimen>
+
+    <dimen name="app_setting_msg_tv_size">16sp</dimen>
+    <dimen name="app_setting_btn_padding">10dp</dimen>
+    <dimen name="app_setting_btn_margin_top">25dp</dimen>
+    <dimen name="app_setting_btn_text_size">16sp</dimen>
+    <dimen name="app_setting_not_now_btn_margin_right">20dp</dimen>
+    <dimen name="app_setting_not_now_btn_padding">10dp</dimen>
+    <dimen name="app_setting_not_now_btn_text_size">16sp</dimen>
+
 </resources>

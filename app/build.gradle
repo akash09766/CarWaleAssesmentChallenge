@@ -104,6 +104,8 @@ dependencies {
 
     implementation "com.afollestad.material-dialogs:core:$material_dialogs"
 
+    implementation "com.google.android.gms:play-services-location:$play_services"
+
     // Testing
     testImplementation "junit:junit:$jUnitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidjUnitVersion"
