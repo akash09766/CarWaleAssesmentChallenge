@@ -182,11 +182,9 @@ class MainActivity : BaseActivity() {
 
             when (sortOrderGroup.checkedButtonId) {
                 R.id.ascending_sort_order -> {
-                    Log.d(TAG, "setListeners: ASCENDING_SORT ")
                     sortFilterData.sortOrder = MConstants.ASCENDING_SORT
                 }
                 R.id.descending_sort_order -> {
-                    Log.d(TAG, "setListeners: DESCENDING_SORT ")
                     sortFilterData.sortOrder = MConstants.DESCENDING_SORT
                 }
             }

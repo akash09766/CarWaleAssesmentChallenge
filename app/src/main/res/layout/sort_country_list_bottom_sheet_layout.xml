@@ -74,6 +74,7 @@
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="@+id/sort_category_title"
         app:layout_constraintTop_toBottomOf="@+id/sort_category_title"
+        app:selectionRequired="true"
         app:singleSelection="true">
 
         <com.google.android.material.button.MaterialButton
@@ -118,6 +119,7 @@
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="@+id/sort_order_title"
         app:layout_constraintTop_toBottomOf="@+id/sort_order_title"
+        app:selectionRequired="true"
         app:singleSelection="true">
 
         <com.google.android.material.button.MaterialButton
