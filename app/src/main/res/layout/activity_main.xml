@@ -406,7 +406,7 @@
         android:id="@+id/home_page_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="gone"
         app:constraint_referenced_ids="sort_btn,filter_btn,world_wide_statistic,global_update_title,global_layout,world_wide_statistic_title" />
 
     <ProgressBar
