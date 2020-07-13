@@ -310,9 +310,8 @@ class MainActivity : BaseActivity() {
             infectedRangeSlider.values =
                 listOf(0F, viewModel.getSortFilterData().globalInfected.toFloat())
         } else {
-            selectedInfectedMinValue.text = 0.toString()
-            selectedInfectedMaxValue.text =
-                viewModel.getSortFilterData().maxInfectedSelected.toString()
+            selectedInfectedMinValue.text =viewModel.getSortFilterData().minInfectedSelected.toString()
+            selectedInfectedMaxValue.text = viewModel.getSortFilterData().maxInfectedSelected.toString()
             infectedRangeSlider.values = listOf(
                 viewModel.getSortFilterData().minInfectedSelected.toFloat(),
                 viewModel.getSortFilterData().maxInfectedSelected.toFloat()
@@ -341,7 +340,7 @@ class MainActivity : BaseActivity() {
             deathRangeSlider.values =
                 listOf(0F, viewModel.getSortFilterData().globalDeath.toFloat())
         } else {
-            selectedDeathMinValue.text = 0.toString()
+            selectedDeathMinValue.text = viewModel.getSortFilterData().minDeathSelected.toString()
             selectedDeathMaxValue.text = viewModel.getSortFilterData().maxDeathSelected.toString()
             deathRangeSlider.values = listOf(
                 viewModel.getSortFilterData().minDeathSelected.toFloat(),
@@ -373,7 +372,7 @@ class MainActivity : BaseActivity() {
             recoveredRangeSlider.values =
                 listOf(0F, viewModel.getSortFilterData().globalRecovered.toFloat())
         } else {
-            selectedRecoveredMinValue.text = 0.toString()
+            selectedRecoveredMinValue.text = viewModel.getSortFilterData().minRecoveredSelected.toString()
             selectedRecoveredMaxValue.text =
                 viewModel.getSortFilterData().maxRecoveredSelected.toString()
             recoveredRangeSlider.values = listOf(
