@@ -12,6 +12,7 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.provider.Settings
 import android.util.Log
 import android.widget.TextView
@@ -53,7 +54,11 @@ class MainActivity : BaseActivity() {
     private lateinit var filterBottomSheetDialog: BottomSheetDialog
     private val REQUEST_LOCATION_PERMISSION = 210
 
+    private lateinit var countDownTimer: CountDownTimer
+
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var isRunning = false;
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,13 +92,15 @@ class MainActivity : BaseActivity() {
         if (CarewaleAssessmentChallengeApplication.prefs?.userCountry.isNullOrEmpty()) {
             binding.userLocationPermissionContent.visible()
         } else {
-            viewModel.getSortFilterData().countryName = CarewaleAssessmentChallengeApplication.prefs?.userCountry!!
+            viewModel.getSortFilterData().countryName =
+                CarewaleAssessmentChallengeApplication.prefs?.userCountry!!
             viewModel.getCovidDataFromDb(MConstants.DEFAULT_PRIMARY_KET_GLOBAL_LIST_TABLE, false)
             viewModel.getCovidData()
         }
     }
 
     private fun setObservers() {
+        Log.d(TAG, "setObservers() called")
         viewModel._globalDetailsWithCountry.observeNotNull(this) { state ->
             when (state) {
                 is ViewState.Success -> {
@@ -108,7 +115,11 @@ class MainActivity : BaseActivity() {
                     binding.recoveredValue.text =
                         formatNumber(state.data.globalDetails?.totalRecovered)
 
-                    countryListAdapter.setData(state.data.countryList,CarewaleAssessmentChallengeApplication.prefs?.userCountry)
+                    countryListAdapter.setData(
+                        state.data.countryList,
+                        CarewaleAssessmentChallengeApplication.prefs?.userCountry
+                    )
+                    startRefreshTimer()
                 }
                 is ViewState.Loading -> {
                     binding.userLocationPermissionContent.gone()
@@ -125,6 +136,7 @@ class MainActivity : BaseActivity() {
                 is ViewState.Error -> {
                     Log.e(TAG, state.message)
                     showLongSnackBar(binding.root, state.message)
+                    startRefreshTimer()
                 }
             }
         }
@@ -142,6 +154,37 @@ class MainActivity : BaseActivity() {
                     showLongSnackBar(binding.root, state.message)
                 }
             }
+        }
+    }
+
+    private fun startRefreshTimer() {
+        if (isRunning) {
+            return
+        }
+        Log.d(TAG, "startRefreshTimer: starting timer")
+        isRunning = true
+        countDownTimer = object :
+            CountDownTimer(MConstants.TWO_MIN_IN_MILLISECONDS, MConstants.TWO_MIN_IN_MILLISECONDS) {
+            override fun onTick(millisUntilFinished: Long) {
+                Log.d(
+                    TAG,
+                    "startRefreshTimer onTick() called with: millisUntilFinished = $millisUntilFinished"
+                )
+                isRunning = true
+            }
+
+            override fun onFinish() {
+                Log.d(TAG, "startRefreshTimer onFinish() called")
+                isRunning = false
+                viewModel.getCovidData()
+            }
+        }.start()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (::countDownTimer.isInitialized) {
+            countDownTimer.cancel()
         }
     }
 

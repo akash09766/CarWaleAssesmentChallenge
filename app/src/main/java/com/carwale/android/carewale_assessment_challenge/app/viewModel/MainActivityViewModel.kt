@@ -69,6 +69,7 @@ class MainActivityViewModel @Inject constructor(private val dataRepository: Data
                             sortFilterData = sortFilterData,
                             countryDetailsList = globalDetailsWithCountryState.data.countryList
                         )
+
                         globalDetailsWithCountry.value =
                             ViewState.Success(globalDetailsWithCountryState.data)
                     }
