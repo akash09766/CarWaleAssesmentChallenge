@@ -102,7 +102,7 @@ inline fun sortFilterCountry(
             for ((index, value) in localCountryDetailsList.withIndex()) {
                 Log.d("Extention", "sortFilterCountry: sortFilterData.countryName : ${sortFilterData.countryName} and  value.countryName : ${value.countryName}")
 
-                if (sortFilterData.countryName.equals(value.countryName, ignoreCase = true)) {
+                if (sortFilterData.countryName.equals(value.countryCode, ignoreCase = true)) {
                     positionOfUserCountry = index
                     return@loop
                 }

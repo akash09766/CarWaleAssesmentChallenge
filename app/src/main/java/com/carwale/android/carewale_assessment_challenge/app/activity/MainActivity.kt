@@ -584,11 +584,11 @@ class MainActivity : BaseActivity() {
 
                 val countryName = getCountryNameFromLatLong(location?.latitude, location?.longitude)
                 CarewaleAssessmentChallengeApplication.prefs?.userCountry = countryName
-                viewModel.getSortFilterData().countryName =
-                    if (countryName.isNullOrEmpty()) "" else countryName
+                viewModel.getSortFilterData().countryName = if (countryName.isNullOrEmpty()) "" else countryName
+
                 getData()
 
-                Log.d(TAG, "fetchUserLocation: location : ${countryName}")
+                Log.d(TAG, "fetchUserLocation: countryName : ${countryName}")
             }
     }
 
@@ -601,11 +601,11 @@ class MainActivity : BaseActivity() {
         try {
             addresses = geocoder.getFromLocation(latitude!!, longitude!!, 1)
             return if (addresses != null && !addresses.isEmpty()) {
-                addresses[0].getCountryName()
-            } else ""
-        } catch (e: IOException) {
+                addresses[0].countryCode
+            } else "None"
+        } catch (e: Exception) {
             Log.d(TAG, "getCountryName: IOException : ${e.message}")
-            return ""
+            return "None"
         }
     }
 }

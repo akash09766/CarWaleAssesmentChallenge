@@ -38,7 +38,7 @@ class CountryListAdapter : RecyclerView.Adapter<CountryListAdapter.CountryListAd
     }
 
     override fun onBindViewHolder(holder: CountryListAdapterViewHolder, position: Int) {
-        if(position == 0 && countryName.equals(countryList[position].countryName, ignoreCase = true)){
+        if(position == 0 && countryName.equals(countryList[position].countryCode, ignoreCase = true)){
             holder.location.typeface = Typeface.DEFAULT_BOLD
             holder.infected.typeface = Typeface.DEFAULT_BOLD
             holder.death.typeface = Typeface.DEFAULT_BOLD
