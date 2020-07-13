@@ -122,6 +122,25 @@
     <dimen name="sort_bottom_sheet_order_toggle_group_margin">10dp</dimen>
     <dimen name="sort_done_btn_tv_size">18sp</dimen>
 
-    // sort bottom sheet
+    <dimen name="sort_done_btn_margin_left_right">10dp</dimen>
+    <dimen name="sort_done_btn_margin_top_bottom">16dp</dimen>
+
+    <dimen name="filter_done_btn_margin_left_right">10dp</dimen>
+    <dimen name="filter_done_btn_margin_top_bottom">16dp</dimen>
+
+
+    //land-scape layout params
+    <dimen name="global_layout_margin_right">5dp</dimen>
+    <dimen name="world_wide_statistic_margin_left">5dp</dimen>
+    <dimen name="filter_bottom_sheet_infected_filter_category_tv_margin_top_landscape">10dp</dimen>
+    <dimen name="filter_bottom_sheet_death_filter_category_tv_margin_top_landscape">10dp</dimen>
+    <dimen name="filter_bottom_sheet_recovered_filter_category_tv_margin_top_landscape">10dp</dimen>
+    <dimen name="infected_filter_min_value_tv_margin_left_landscape">30dp</dimen>
+    <dimen name="death_filter_min_value_tv_margin_left_landscape">30dp</dimen>
+    <dimen name="recovered_filter_min_value_tv_margin_left_landscape">30dp</dimen>
+    <dimen name="filter_done_btn_margin_left_landscape">10dp</dimen>
+    <dimen name="filter_done_btn_margin_top_landscape">5dp</dimen>
+    <dimen name="filter_done_btn_margin_right_landscape">10dp</dimen>
+
 
 </resources>

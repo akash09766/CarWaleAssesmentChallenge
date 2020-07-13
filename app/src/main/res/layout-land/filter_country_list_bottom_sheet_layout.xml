@@ -39,7 +39,7 @@
         android:id="@+id/infected_filter_category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/filter_bottom_sheet_infected_filter_category_tv_margin_top"
+        android:layout_marginTop="@dimen/filter_bottom_sheet_infected_filter_category_tv_margin_top_landscape"
         android:text="@string/filter_bottom_sheet_infected_filter_category_tv_title"
         android:textColor="@android:color/black"
         android:textSize="@dimen/filter_bottom_sheet_infected_filter_category_tv_size"
@@ -50,11 +50,13 @@
         android:id="@+id/infected_filter_min_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/infected_filter_min_value_tv_margin_left_landscape"
         android:text="@string/infected_filter_min_value_tv_text"
         android:textColor="@color/button_inactive_color"
         android:textSize="@dimen/infected_filter_min_value_tv_size"
-        app:layout_constraintStart_toStartOf="@+id/infected_filter_category_title"
-        app:layout_constraintTop_toBottomOf="@+id/infected_filter_category_title" />
+        app:layout_constraintBottom_toBottomOf="@+id/infected_filter_category_title"
+        app:layout_constraintStart_toEndOf="@+id/infected_filter_category_title"
+        app:layout_constraintTop_toTopOf="@+id/infected_filter_category_title" />
 
     <TextView
         android:id="@+id/infected_filter_min_max_separator"
@@ -64,8 +66,9 @@
         android:text="@string/infected_filter_min_max_separator_value"
         android:textColor="@color/button_inactive_color"
         android:textSize="@dimen/infected_filter_min_max_separator_tv_size"
+        app:layout_constraintBottom_toBottomOf="@+id/infected_filter_category_title"
         app:layout_constraintStart_toEndOf="@+id/infected_filter_min_value"
-        app:layout_constraintTop_toBottomOf="@+id/infected_filter_category_title" />
+        app:layout_constraintTop_toTopOf="@+id/infected_filter_category_title" />
 
 
     <TextView
@@ -76,8 +79,9 @@
         android:text="12312331"
         android:textColor="@color/button_inactive_color"
         android:textSize="@dimen/infected_filter_max_value_tv_size"
+        app:layout_constraintBottom_toBottomOf="@+id/infected_filter_min_max_separator"
         app:layout_constraintStart_toEndOf="@+id/infected_filter_min_max_separator"
-        app:layout_constraintTop_toBottomOf="@+id/infected_filter_category_title" />
+        app:layout_constraintTop_toTopOf="@+id/infected_filter_min_max_separator" />
 
 
     <com.google.android.material.slider.RangeSlider
@@ -95,7 +99,7 @@
         android:id="@+id/death_filter_category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/filter_bottom_sheet_death_filter_category_tv_margin_top"
+        android:layout_marginTop="@dimen/filter_bottom_sheet_death_filter_category_tv_margin_top_landscape"
         android:text="@string/filter_bottom_sheet_death_filter_category_tv_title"
         android:textColor="@android:color/black"
         android:textSize="@dimen/death_filter_category_title_tv_size"
@@ -106,11 +110,13 @@
         android:id="@+id/death_filter_min_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/death_filter_min_value_tv_margin_left_landscape"
         android:text="@string/death_filter_min_value_tv_text"
         android:textColor="@color/button_inactive_color"
         android:textSize="@dimen/death_filter_min_max_separator_tv_size"
-        app:layout_constraintStart_toStartOf="@+id/death_filter_category_title"
-        app:layout_constraintTop_toBottomOf="@+id/death_filter_category_title" />
+        app:layout_constraintBottom_toBottomOf="@+id/death_filter_category_title"
+        app:layout_constraintStart_toEndOf="@+id/death_filter_category_title"
+        app:layout_constraintTop_toTopOf="@+id/death_filter_category_title" />
 
     <TextView
         android:id="@+id/death_filter_min_max_separator"
@@ -120,8 +126,9 @@
         android:text="@string/death_filter_min_max_separator_value"
         android:textColor="@color/button_inactive_color"
         android:textSize="@dimen/death_filter_min_max_separator_tv_size"
+        app:layout_constraintBottom_toBottomOf="@+id/death_filter_min_value"
         app:layout_constraintStart_toEndOf="@+id/death_filter_min_value"
-        app:layout_constraintTop_toBottomOf="@+id/death_filter_category_title" />
+        app:layout_constraintTop_toTopOf="@+id/death_filter_min_value" />
 
 
     <TextView
@@ -132,8 +139,9 @@
         android:text="12312331"
         android:textColor="@color/button_inactive_color"
         android:textSize="@dimen/death_filter_min_max_separator_tv_size"
+        app:layout_constraintBottom_toBottomOf="@+id/death_filter_min_max_separator"
         app:layout_constraintStart_toEndOf="@+id/death_filter_min_max_separator"
-        app:layout_constraintTop_toBottomOf="@+id/death_filter_category_title" />
+        app:layout_constraintTop_toTopOf="@+id/death_filter_min_max_separator" />
 
 
     <com.google.android.material.slider.RangeSlider
@@ -150,7 +158,7 @@
         android:id="@+id/recovered_filter_category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/filter_bottom_sheet_recovered_filter_category_tv_margin_top"
+        android:layout_marginTop="@dimen/filter_bottom_sheet_recovered_filter_category_tv_margin_top_landscape"
         android:text="@string/filter_bottom_sheet_recovered_filter_category_tv_title"
         android:textColor="@android:color/black"
         android:textSize="@dimen/filter_bottom_sheet_recovered_filter_category_tv_size"
@@ -162,21 +170,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/recovered_filter_min_value_tv_text"
+        android:layout_marginLeft="@dimen/recovered_filter_min_value_tv_margin_left_landscape"
         android:textColor="@color/button_inactive_color"
         android:textSize="@dimen/recovered_filter_min_max_separator_tv_size"
-        app:layout_constraintStart_toStartOf="@+id/recovered_filter_category_title"
-        app:layout_constraintTop_toBottomOf="@+id/recovered_filter_category_title" />
+        app:layout_constraintBottom_toBottomOf="@+id/recovered_filter_category_title"
+        app:layout_constraintStart_toEndOf="@+id/recovered_filter_category_title"
+        app:layout_constraintTop_toTopOf="@+id/recovered_filter_category_title" />
 
     <TextView
         android:id="@+id/recovered_filter_min_max_separator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/recovered_filter_min_max_separator_margin_left"
+        android:layout_marginStart="20dp"
         android:text="@string/recovered_filter_min_max_separator_value"
         android:textColor="@color/button_inactive_color"
         android:textSize="@dimen/recovered_filter_min_max_separator_tv_size"
+        app:layout_constraintBottom_toBottomOf="@+id/recovered_filter_min_value"
         app:layout_constraintStart_toEndOf="@+id/recovered_filter_min_value"
-        app:layout_constraintTop_toBottomOf="@+id/recovered_filter_category_title" />
+        app:layout_constraintTop_toTopOf="@+id/recovered_filter_min_value" />
 
 
     <TextView
@@ -187,8 +198,9 @@
         android:text="12312331"
         android:textColor="@color/button_inactive_color"
         android:textSize="@dimen/recovered_filter_max_value_tv_size"
+        app:layout_constraintBottom_toBottomOf="@+id/recovered_filter_min_max_separator"
         app:layout_constraintStart_toEndOf="@+id/recovered_filter_min_max_separator"
-        app:layout_constraintTop_toBottomOf="@+id/recovered_filter_category_title" />
+        app:layout_constraintTop_toTopOf="@+id/recovered_filter_min_max_separator" />
 
 
     <com.google.android.material.slider.RangeSlider
@@ -207,14 +219,12 @@
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="0dp"
         android:layout_height="?actionBarSize"
-        android:layout_marginLeft="@dimen/filter_done_btn_margin_left_right"
-        android:layout_marginTop="@dimen/filter_done_btn_margin_top_bottom"
-        android:layout_marginRight="@dimen/filter_done_btn_margin_left_right"
-        android:layout_marginBottom="@dimen/filter_done_btn_margin_top_bottom"
+        android:layout_marginLeft="@dimen/filter_done_btn_margin_left_landscape"
+        android:layout_marginTop="@dimen/filter_done_btn_margin_top_landscape"
+        android:layout_marginRight="@dimen/filter_done_btn_margin_right_landscape"
         android:text="@string/filter_done_btn_text"
         android:textColor="@android:color/black"
         android:textSize="@dimen/filter_done_btn_tv_size"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recovered_range_slider" />
