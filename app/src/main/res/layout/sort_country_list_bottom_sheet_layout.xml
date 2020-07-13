@@ -23,9 +23,9 @@
         android:id="@+id/sort_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sort"
+        android:text="@string/sort_bottom_sheet_title"
         android:textColor="@color/button_inactive_color"
-        android:textSize="20sp"
+        android:textSize="@dimen/sort_title_tv_size"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/divider06"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,9 +33,9 @@
     <View
         android:id="@+id/divider06"
         android:layout_width="match_parent"
-        android:layout_height="1.0dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_height="@dimen/sort_bottom_sheet_divider06_height"
+        android:layout_marginLeft="@dimen/sort_bottom_sheet_divider06_margin_left"
+        android:layout_marginRight="@dimen/sort_bottom_sheet_divider06_margin_right"
         android:background="@color/global_layout_border_color"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,10 +47,10 @@
         android:id="@+id/sort_category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Category"
+        android:layout_marginTop="@dimen/sort_bottom_sheet_category_title_margin_top"
+        android:text="@string/sort_bottom_sheet_category_title"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="@dimen/sort_bottom_sheet_category_tv_size"
         app:layout_constraintStart_toStartOf="@+id/divider06"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
@@ -58,9 +58,9 @@
         android:id="@+id/sort_order_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Order"
+        android:text="@string/sort_bottom_sheet_order_title"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="@dimen/sort_bottom_sheet_order_tv_size"
         app:layout_constraintBottom_toBottomOf="@+id/sort_category_title"
         app:layout_constraintStart_toStartOf="@+id/guideline1"
         app:layout_constraintTop_toTopOf="@+id/sort_category_title" />
@@ -70,7 +70,7 @@
         android:id="@+id/sort_category_options"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/sort_bottom_sheet_category_toggle_group_margin"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="@+id/sort_category_title"
         app:layout_constraintTop_toBottomOf="@+id/sort_category_title"
@@ -82,7 +82,7 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Location"
+            android:text="@string/location"
             android:textAllCaps="false" />
 
         <com.google.android.material.button.MaterialButton
@@ -90,7 +90,7 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Infected"
+            android:text="@string/infected"
             android:textAllCaps="false" />
 
         <com.google.android.material.button.MaterialButton
@@ -98,7 +98,7 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Death"
+            android:text="@string/death"
             android:textAllCaps="false" />
 
         <com.google.android.material.button.MaterialButton
@@ -106,7 +106,7 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Recovered"
+            android:text="@string/recovered"
             android:textAllCaps="false" />
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
@@ -115,7 +115,7 @@
         android:id="@+id/sort_order_options"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/sort_bottom_sheet_order_toggle_group_margin"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="@+id/sort_order_title"
         app:layout_constraintTop_toBottomOf="@+id/sort_order_title"
@@ -127,7 +127,7 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ascending"
+            android:text="@string/ascending"
             android:textAllCaps="false" />
 
         <com.google.android.material.button.MaterialButton
@@ -135,9 +135,8 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descending"
+            android:text="@string/descending"
             android:textAllCaps="false" />
-
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
@@ -150,9 +149,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="16dp"
-        android:text="Done"
+        android:text="@string/sort_done_btn_title"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="@dimen/sort_done_btn_tv_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline1"
         app:layout_constraintStart_toStartOf="@+id/guideline1"

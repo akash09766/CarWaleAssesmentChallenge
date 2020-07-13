@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE resources [
-    <!ENTITY appname "CarWale Assessment Challenge">
-    ]>
+    <!ENTITY appname "CarWale Assessment Challenge">]>
 <resources>
     <string name="app_name">&appname;</string>
     <string name="main_activity_title">Covid - 19 Tracker</string>
 
-    <string name="user_location_permission_explanation">We need location permission to show the your country covid-19 data on the top of list.\n\nPlease grant location permission</string>
+    <string name="user_location_permission_explanation">We need location permission to show your country covid-19 data on the top of list.\n\nPlease grant location permission</string>
     <string name="allow_location_permission_btn_title">Allow location permission</string>
 
 
@@ -22,4 +21,40 @@
 
     <string name="user_msg_enable_gps_dialog_positive_btn_title">Yes</string>
     <string name="user_msg_enable_gps_dialog_negative_btn_title">No</string>
+    <string name="global_update_tv_title">Covid 19 Global Cases</string>
+
+    <string name="infected">Infected</string>
+    <string name="infectedValue_dummy_value">3,174,516</string>
+    <string name="death">Death</string>
+    <string name="deathValue_dummy_value">174,516</string>
+    <string name="recovered">Recovered</string>
+    <string name="recoveredValue_dummy_value">1,474,516</string>
+    <string name="world_wide_statistic_tv_title">Worldwide Statistics</string>
+    <string name="location_list_tv_title">Location</string>
+    <string name="infected_list_tv_title">Infected</string>
+    <string name="recovered_list_tv_title">Recovered</string>
+    <string name="filter_bottom_sheet_title">Filter</string>
+
+    <string name="filter_bottom_sheet_infected_filter_category_tv_title">Infected</string>
+    <string name="filter_bottom_sheet_death_filter_category_tv_title">Death</string>
+    <string name="filter_bottom_sheet_recovered_filter_category_tv_title">Recovered</string>
+    <string name="infected_filter_min_max_separator_value">-</string>
+    <string name="infected_filter_min_value_tv_text">0</string>
+
+    <string name="death_filter_min_max_separator_value">-</string>
+    <string name="death_filter_min_value_tv_text">0</string>
+
+    <string name="recovered_filter_min_max_separator_value">-</string>
+    <string name="recovered_filter_min_value_tv_text">0</string>
+    <string name="filter_done_btn_text">Done</string>
+    <string name="clear_filter_btn_text">Clear all</string>
+
+    // sort bottom sheet
+    <string name="sort_bottom_sheet_title">Sort</string>
+    <string name="sort_bottom_sheet_category_title">Category</string>
+    <string name="sort_bottom_sheet_order_title">Order</string>
+    <string name="location">Location</string>
+    <string name="ascending">Ascending</string>
+    <string name="descending">Descending</string>
+    <string name="sort_done_btn_title">Done</string>
 </resources>

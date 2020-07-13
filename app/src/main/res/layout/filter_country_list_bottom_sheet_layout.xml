@@ -15,9 +15,9 @@
         android:id="@+id/sort_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Filter"
+        android:text="@string/filter_bottom_sheet_title"
         android:textColor="@color/button_inactive_color"
-        android:textSize="20sp"
+        android:textSize="@dimen/filter_bottom_sheet_title_tv_size"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/divider06"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,9 +25,9 @@
     <View
         android:id="@+id/divider06"
         android:layout_width="match_parent"
-        android:layout_height="1.0dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_height="@dimen/filter_bottom_sheet_divider06_height"
+        android:layout_marginLeft="@dimen/filter_bottom_sheet_divider06_margin_left"
+        android:layout_marginRight="@dimen/filter_bottom_sheet_divider06_margin_right"
         android:background="@color/global_layout_border_color"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,10 +39,10 @@
         android:id="@+id/infected_filter_category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Infected"
+        android:layout_marginTop="@dimen/filter_bottom_sheet_infected_filter_category_tv_margin_top"
+        android:text="@string/filter_bottom_sheet_infected_filter_category_tv_title"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
+        android:textSize="@dimen/filter_bottom_sheet_infected_filter_category_tv_size"
         app:layout_constraintStart_toStartOf="@+id/divider06"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
@@ -50,9 +50,9 @@
         android:id="@+id/infected_filter_min_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
+        android:text="@string/infected_filter_min_value_tv_text"
         android:textColor="@color/button_inactive_color"
-        android:textSize="18sp"
+        android:textSize="@dimen/infected_filter_min_value_tv_size"
         app:layout_constraintStart_toStartOf="@+id/infected_filter_category_title"
         app:layout_constraintTop_toBottomOf="@+id/infected_filter_category_title" />
 
@@ -60,10 +60,10 @@
         android:id="@+id/infected_filter_min_max_separator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="-"
+        android:layout_marginLeft="@dimen/infected_filter_min_max_separator_margin_left"
+        android:text="@string/infected_filter_min_max_separator_value"
         android:textColor="@color/button_inactive_color"
-        android:textSize="18sp"
+        android:textSize="@dimen/infected_filter_min_max_separator_tv_size"
         app:layout_constraintStart_toEndOf="@+id/infected_filter_min_value"
         app:layout_constraintTop_toBottomOf="@+id/infected_filter_category_title" />
 
@@ -72,10 +72,10 @@
         android:id="@+id/infected_filter_max_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/infected_filter_max_value_tv_margin_left"
         android:text="12312331"
         android:textColor="@color/button_inactive_color"
-        android:textSize="18sp"
+        android:textSize="@dimen/infected_filter_max_value_tv_size"
         app:layout_constraintStart_toEndOf="@+id/infected_filter_min_max_separator"
         app:layout_constraintTop_toBottomOf="@+id/infected_filter_category_title" />
 
@@ -95,10 +95,10 @@
         android:id="@+id/death_filter_category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Death"
+        android:layout_marginTop="@dimen/filter_bottom_sheet_death_filter_category_tv_margin_top"
+        android:text="@string/filter_bottom_sheet_death_filter_category_tv_title"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
+        android:textSize="@dimen/death_filter_category_title_tv_size"
         app:layout_constraintStart_toStartOf="@+id/divider06"
         app:layout_constraintTop_toBottomOf="@+id/infected_range_slider" />
 
@@ -106,9 +106,9 @@
         android:id="@+id/death_filter_min_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
+        android:text="@string/death_filter_min_value_tv_text"
         android:textColor="@color/button_inactive_color"
-        android:textSize="18sp"
+        android:textSize="@dimen/death_filter_min_max_separator_tv_size"
         app:layout_constraintStart_toStartOf="@+id/death_filter_category_title"
         app:layout_constraintTop_toBottomOf="@+id/death_filter_category_title" />
 
@@ -116,10 +116,10 @@
         android:id="@+id/death_filter_min_max_separator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="-"
+        android:layout_marginLeft="@dimen/death_filter_min_max_separator_margin_left"
+        android:text="@string/death_filter_min_max_separator_value"
         android:textColor="@color/button_inactive_color"
-        android:textSize="18sp"
+        android:textSize="@dimen/death_filter_min_max_separator_tv_size"
         app:layout_constraintStart_toEndOf="@+id/death_filter_min_value"
         app:layout_constraintTop_toBottomOf="@+id/death_filter_category_title" />
 
@@ -128,10 +128,10 @@
         android:id="@+id/death_filter_max_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/death_filter_min_max_separator_margin_left"
         android:text="12312331"
         android:textColor="@color/button_inactive_color"
-        android:textSize="18sp"
+        android:textSize="@dimen/death_filter_min_max_separator_tv_size"
         app:layout_constraintStart_toEndOf="@+id/death_filter_min_max_separator"
         app:layout_constraintTop_toBottomOf="@+id/death_filter_category_title" />
 
@@ -150,10 +150,10 @@
         android:id="@+id/recovered_filter_category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Recovered"
+        android:layout_marginTop="@dimen/filter_bottom_sheet_recovered_filter_category_tv_margin_top"
+        android:text="@string/filter_bottom_sheet_recovered_filter_category_tv_title"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
+        android:textSize="@dimen/filter_bottom_sheet_recovered_filter_category_tv_size"
         app:layout_constraintStart_toStartOf="@+id/divider06"
         app:layout_constraintTop_toBottomOf="@+id/death_range_slider" />
 
@@ -161,9 +161,9 @@
         android:id="@+id/recovered_filter_min_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
+        android:text="@string/recovered_filter_min_value_tv_text"
         android:textColor="@color/button_inactive_color"
-        android:textSize="18sp"
+        android:textSize="@dimen/recovered_filter_min_max_separator_tv_size"
         app:layout_constraintStart_toStartOf="@+id/recovered_filter_category_title"
         app:layout_constraintTop_toBottomOf="@+id/recovered_filter_category_title" />
 
@@ -171,10 +171,10 @@
         android:id="@+id/recovered_filter_min_max_separator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="-"
+        android:layout_marginLeft="@dimen/recovered_filter_min_max_separator_margin_left"
+        android:text="@string/recovered_filter_min_max_separator_value"
         android:textColor="@color/button_inactive_color"
-        android:textSize="18sp"
+        android:textSize="@dimen/recovered_filter_min_max_separator_tv_size"
         app:layout_constraintStart_toEndOf="@+id/recovered_filter_min_value"
         app:layout_constraintTop_toBottomOf="@+id/recovered_filter_category_title" />
 
@@ -183,10 +183,10 @@
         android:id="@+id/recovered_filter_max_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/recovered_filter_max_value_margin_left"
         android:text="12312331"
         android:textColor="@color/button_inactive_color"
-        android:textSize="18sp"
+        android:textSize="@dimen/recovered_filter_max_value_tv_size"
         app:layout_constraintStart_toEndOf="@+id/recovered_filter_min_max_separator"
         app:layout_constraintTop_toBottomOf="@+id/recovered_filter_category_title" />
 
@@ -211,9 +211,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="16dp"
-        android:text="Done"
+        android:text="@string/filter_done_btn_text"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="@dimen/filter_done_btn_tv_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -224,8 +224,8 @@
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:text="Clear all"
+        android:layout_marginRight="@dimen/clear_filter_btn_margin_right"
+        android:text="@string/clear_filter_btn_text"
         android:textAllCaps="true"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="@+id/sort_title"

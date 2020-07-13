@@ -19,4 +19,109 @@
     <dimen name="app_setting_not_now_btn_padding">10dp</dimen>
     <dimen name="app_setting_not_now_btn_text_size">16sp</dimen>
 
+    // view for user explanation of permission on home page
+    <dimen name="user_location_msg_text_size">16dp</dimen>
+    <dimen name="allow_location_permission_btn_margin_top">16dp</dimen>
+
+    // home page user covid data view
+    <dimen name="home_page_title_tv_size">26sp</dimen>
+    <dimen name="sort_btn_width_height">32dp</dimen>
+    <dimen name="sort_btn_margin_right">10dp</dimen>
+    <dimen name="sort_btn_padding">2dp</dimen>
+    <dimen name="filter_btn_width_height">32dp</dimen>
+    <dimen name="filter_btn_padding">2dp</dimen>
+    <dimen name="global_update_title_margin_bottom">10dp</dimen>
+    <dimen name="global_update_title_size">20sp</dimen>
+    <dimen name="divider01_height">30dp</dimen>
+    <dimen name="divider02_height">30dp</dimen>
+
+    <dimen name="infected_tv_size">16sp</dimen>
+    <dimen name="infected_value_tv_size">16sp</dimen>
+    <dimen name="infected_value_tv_margin_top">10dp</dimen>
+
+    <dimen name="death_tv_size">16sp</dimen>
+    <dimen name="death_value_tv_size">16sp</dimen>
+    <dimen name="death_value_tv_margin_top">10dp</dimen>
+
+    <dimen name="recovered_tv_size">16sp</dimen>
+    <dimen name="recovered_value_tv_size">16sp</dimen>
+    <dimen name="recovered_value_tv_margin_top">10dp</dimen>
+
+    <dimen name="world_wide_statistic_tv_size">20sp</dimen>
+    <dimen name="world_wide_statistic_margin_top">10dp</dimen>
+    <dimen name="country_recyclerView_margin_top">3dp</dimen>
+    <dimen name="country_recyclerView_margin_bottom">3dp</dimen>
+    <dimen name="location_list_title_margin_left">16dp</dimen>
+    <dimen name="location_list_title_margin_bottom">10dp</dimen>
+    <dimen name="location_list_tv_size">16sp</dimen>
+    <dimen name="infected_list_title_margin_bottom">10dp</dimen>
+    <dimen name="infected_list_tv_size">16sp</dimen>
+    <dimen name="divider04_width">30dp</dimen>
+    <dimen name="update_progress_circular_width_height">30dp</dimen>
+    <dimen name="divider06_width">30dp</dimen>
+    <dimen name="recovered_list_title_tv_size">16sp</dimen>
+    <dimen name="divider05_width">30dp</dimen>
+
+    <dimen name="divider04_height">1dp</dimen>
+    <dimen name="divider03_height">1dp</dimen>
+    <dimen name="divider02_width">1dp</dimen>
+    <dimen name="divider01_width">1dp</dimen>
+    <dimen name="divider06_height">1dp</dimen>
+    <dimen name="divider05_height">1dp</dimen>
+    <dimen name="country_list_item_margin_top">8dp</dimen>
+    <dimen name="country_list_item_margin_bottom">8dp</dimen>
+    <dimen name="country_list_item_location_tv_margin_bottom">10dp</dimen>
+    <dimen name="country_list_item_location_tv_padding_left">16dp</dimen>
+    <dimen name="country_list_item_location_tv_size">16sp</dimen>
+    <dimen name="country_list_item_infected_tv_size">16sp</dimen>
+
+    <dimen name="country_list_item_infected_tv_margin_bottom">10dp</dimen>
+    <dimen name="country_list_item_death_tv_margin_bottom">10dp</dimen>
+    <dimen name="country_list_item_death_tv_size">16sp</dimen>
+    <dimen name="country_list_item_recovered_tv_margin_bottom">10dp</dimen>
+    <dimen name="country_list_item_recovered_tv_size">16sp</dimen>
+    <dimen name="filter_bottom_sheet_title_tv_size">20sp</dimen>
+    <dimen name="filter_bottom_sheet_divider06_height">1dp</dimen>
+    <dimen name="filter_bottom_sheet_divider06_margin_left">10dp</dimen>
+    <dimen name="filter_bottom_sheet_divider06_margin_right">10dp</dimen>
+    <dimen name="filter_bottom_sheet_infected_filter_category_tv_margin_top">20dp</dimen>
+    <dimen name="filter_bottom_sheet_infected_filter_category_tv_size">20sp</dimen>
+
+
+    <dimen name="filter_bottom_sheet_death_filter_category_tv_margin_top">20dp</dimen>
+    <dimen name="filter_bottom_sheet_death_filter_category_tv_size">20sp</dimen>
+
+
+    <dimen name="filter_bottom_sheet_recovered_filter_category_tv_margin_top">20dp</dimen>
+    <dimen name="filter_bottom_sheet_recovered_filter_category_tv_size">20sp</dimen>
+
+    <dimen name="infected_filter_min_max_separator_tv_size">18sp</dimen>
+    <dimen name="infected_filter_min_max_separator_margin_left">10dp</dimen>
+    <dimen name="infected_filter_min_value_tv_size">18sp</dimen>
+    <dimen name="infected_filter_max_value_tv_margin_left">10dp</dimen>
+    <dimen name="infected_filter_max_value_tv_size">18sp</dimen>
+
+    <dimen name="death_filter_category_title_tv_size">20sp</dimen>
+
+    <dimen name="death_filter_min_max_separator_margin_left">10dp</dimen>
+    <dimen name="death_filter_min_max_separator_tv_size">18sp</dimen>
+    <dimen name="recovered_filter_min_max_separator_margin_left">10dp</dimen>
+    <dimen name="recovered_filter_min_max_separator_tv_size">18sp</dimen>
+    <dimen name="recovered_filter_max_value_margin_left">10dp</dimen>
+    <dimen name="recovered_filter_max_value_tv_size">18sp</dimen>
+    <dimen name="filter_done_btn_tv_size">18sp</dimen>
+    <dimen name="clear_filter_btn_margin_right">16dp</dimen>
+    <dimen name="sort_title_tv_size">20sp</dimen>
+    <dimen name="sort_bottom_sheet_divider06_height">1dp</dimen>
+    <dimen name="sort_bottom_sheet_divider06_margin_left">10dp</dimen>
+    <dimen name="sort_bottom_sheet_divider06_margin_right">10dp</dimen>
+    <dimen name="sort_bottom_sheet_category_tv_size">18sp</dimen>
+    <dimen name="sort_bottom_sheet_category_title_margin_top">20dp</dimen>
+    <dimen name="sort_bottom_sheet_order_tv_size">18sp</dimen>
+    <dimen name="sort_bottom_sheet_category_toggle_group_margin">10dp</dimen>
+    <dimen name="sort_bottom_sheet_order_toggle_group_margin">10dp</dimen>
+    <dimen name="sort_done_btn_tv_size">18sp</dimen>
+
+    // sort bottom sheet
+
 </resources>

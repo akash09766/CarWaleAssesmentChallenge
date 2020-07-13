@@ -4,8 +4,8 @@
     android:id="@+id/world_wide_statistic"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp">
+    android:layout_marginTop="@dimen/country_list_item_margin_top"
+    android:layout_marginBottom="@dimen/country_list_item_margin_bottom">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline11"
@@ -28,17 +28,16 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.77" />
 
-
     <TextView
         android:id="@+id/location"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/country_list_item_location_tv_margin_bottom"
         android:gravity="center_vertical"
-        android:paddingLeft="16dp"
+        android:paddingLeft="@dimen/country_list_item_location_tv_padding_left"
         android:text="USA"
         android:textColor="@color/button_inactive_color"
-        android:textSize="16sp"
+        android:textSize="@dimen/country_list_item_location_tv_size"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="parent" />
@@ -47,10 +46,10 @@
         android:id="@+id/infected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/country_list_item_infected_tv_margin_bottom"
         android:text="842624"
         android:textColor="@color/button_inactive_color"
-        android:textSize="16sp"
+        android:textSize="@dimen/country_list_item_infected_tv_size"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="@+id/guideline11" />
@@ -59,10 +58,10 @@
         android:id="@+id/death"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/country_list_item_death_tv_margin_bottom"
         android:text="46785"
         android:textColor="@color/button_inactive_color"
-        android:textSize="16sp"
+        android:textSize="@dimen/country_list_item_death_tv_size"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
         app:layout_constraintStart_toStartOf="@+id/guideline12" />
@@ -72,10 +71,10 @@
         android:id="@+id/recovered"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/country_list_item_recovered_tv_margin_bottom"
         android:text="76614"
         android:textColor="@color/button_inactive_color"
-        android:textSize="16sp"
+        android:textSize="@dimen/country_list_item_recovered_tv_size"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline13" />
